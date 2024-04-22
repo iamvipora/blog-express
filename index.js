@@ -7,7 +7,7 @@ const app = express()
 const port = 3000
 
 const corsOptions = {
-  origin: `*`,
+  origin: ['http://localhost:5173', 'https://blog-react-swart-pi.vercel.app'],
   credentials: true
 }                   
 
