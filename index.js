@@ -13,16 +13,25 @@ const port = 3000
 
 // app.use(cors(corsOptions))
 
-app.use(function(req, res, next) {
-  // const allowedOrigins = ['http://localhost:5173'];
-  res.set({
-    "Access-Control-Allow-Origin": ['http://localhost:5173'],
-    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
-    "Access-Control-Allow-credentials": true,
-    "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, UPDATE, PATCH"
-  })
+app.use((req, res, next) => {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "*"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS,CONNECT,TRACE"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Authorization, X-Content-Type-Options, Accept, X-Requested-With, Origin, Access-Control-Request-Method, Access-Control-Request-Headers"
+  );
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  res.setHeader("Access-Control-Allow-Private-Network", true);
+  res.setHeader("Access-Control-Max-Age", 7200);
+
   next();
-})
+}); 
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
