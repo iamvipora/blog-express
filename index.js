@@ -14,8 +14,8 @@ app.use(
   }
 ))
 
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+// app.use(express.json())
+// app.use(express.urlencoded({ extended: true }))
 
 app.post('/user', async (req, res) => {
   const user = await prisma.user.create({
