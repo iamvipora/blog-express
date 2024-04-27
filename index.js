@@ -4,17 +4,18 @@ const prisma = new PrismaClient()
 const express = require('express')
 const app = express()
 const cors = require('cors')
-const port = 3000
-
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+const port = process.env.PORT || 3000;
 
 app.use(
   cors({
     origin: '*',
-    methods: ['GET', 'POST', 'PATCH', 'DELETE']
+    credentials: true
+    // methods: ['GET', 'POST', 'PATCH', 'DELETE']
   }
 ))
+
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
 app.post('/user', async (req, res) => {
   const user = await prisma.user.create({
