@@ -6,11 +6,11 @@ const cors = require('cors')
 const app = express()
 const port = 3000
 
-// const corsOptions = {
-//   origin: '*'
-// }
+const corsOptions = {
+  origin: '*'
+}
 
-// app.use(cors(corsOptions))
+app.use(cors(corsOptions))
 
 app.use((req, res, next) => {
   res.setHeader(
