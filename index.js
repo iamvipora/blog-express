@@ -8,14 +8,13 @@ const port = process.env.PORT || 4000;
 
 app.use(
   cors({
-    origin: '*',
-    credentials: true
-    // methods: ['GET', 'POST', 'PATCH', 'DELETE']
+    origin: '*'
+    // credentials: true
   }
 ))
 
-// app.use(express.json())
-// app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
 app.post('/user', async (req, res) => {
   const user = await prisma.user.create({
